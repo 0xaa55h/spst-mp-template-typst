@@ -1,30 +1,5 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.1": *
-#show: codly-init.with()
-
-#codly(languages: codly-languages, zebra-fill: none, display-icon: false, display-name: false)
-
-#set page(
-  paper: "a4",
-  margin: (
-    left: 4cm,
-    right: 2.5cm,
-    top: 3cm,
-    bottom: 3cm,
-  ),
-);
-
-#set text(font: "Times New Roman", size: 12pt, lang: "cs");
-#show heading: set block(below: 20pt, above: 20pt);
-#show math.equation: set text(size: 16pt);
-#set figure(gap: 1.5em);
-#show figure: set block(below: 16pt, above: 16pt);
-#set par(leading: 1em, spacing: 0.75em + 18pt, justify: true);
-#show heading.where(level: 1): set text(size: 20pt, weight: "bold");
-#show heading.where(level: 2): set text(size: 16pt, weight: "bold");
-#show heading.where(level: 3): set text(size: 14pt, weight: "bold");
-#show figure.where(kind: "raw"): set figure(supplement: "Výpis");
-#set align(center)
 
 #let thesis(
   name: "Název maturitní práce",
@@ -56,6 +31,32 @@
   date: "15. května 2024",
   body: [],
 ) = {
+  show: codly-init.with()
+
+  codly(languages: codly-languages, zebra-fill: none, display-icon: false, display-name: false)
+
+  set page(
+    paper: "a4",
+    margin: (
+      left: 4cm,
+      right: 2.5cm,
+      top: 3cm,
+      bottom: 3cm,
+    ),
+  );
+
+  set text(font: "Times New Roman", size: 12pt, lang: "cs");
+  show heading: set block(below: 20pt, above: 20pt);
+  show math.equation: set text(size: 16pt);
+  set figure(gap: 1.5em);
+  show figure: set block(below: 16pt, above: 16pt);
+  set par(leading: 1em, spacing: 0.75em + 18pt, justify: true);
+  show heading.where(level: 1): set text(size: 20pt, weight: "bold");
+  show heading.where(level: 2): set text(size: 16pt, weight: "bold");
+  show heading.where(level: 3): set text(size: 14pt, weight: "bold");
+  show figure.where(kind: "raw"): set figure(supplement: "Výpis");
+  set align(center)
+
   grid(
     columns: 2,
     align: horizon,
