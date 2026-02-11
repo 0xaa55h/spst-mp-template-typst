@@ -450,6 +450,9 @@
           <if match="any" variable="ISBN">
             <text variable="ISBN" prefix="ISBN "/>
           </if>
+          <else-if match="any" variable="ISSN">
+            <text variable="ISSN" prefix="ISSN "/>
+          </else-if>
           <else-if match="any" variable="PMID">
             <text variable="PMID" prefix="PMID "/>
           </else-if>
