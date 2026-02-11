@@ -2,7 +2,7 @@
 
 Toto je šablona pro tvorbu maturitní práce na Střední průmyslové škole Třebíč pomocí [Typst](https://typst.app/).
 
-> [!WARN]
+> [!WARNING]
 > Použití šablony je na vlastní nebezepečí. Negarantuji, že při použití vám nebudou strženy body za formátování a úpravy.
 
 ## Jak používat
