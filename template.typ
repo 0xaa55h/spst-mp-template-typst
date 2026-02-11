@@ -202,12 +202,3 @@
     target: figure.where(kind: table),
   )
 }
-
-#thesis(body: [
-  = Úvod
-  Cílem této příručky je poskytnout žákům a učitelům SPŠ Třebíč ucelený přehled informací o struktuře a formální stránce odborných prací v souladu s českými a mezinárodními standardy a normami, aby celkový vzhled vzniklých prací byl jednotný a důstojně reprezentoval školu.
-
-  Pro maturitní práce a dokumenty vytvářené v SPŠ Třebíč se používá tato metodika.
-
-  Pokyny pro citace a výpis použitých zdrojů odpovídají aktualizované normě ČSN ISO 690 (01 0197), která je českou verzí mezinárodní normy ISO 690:2022. [1] Pro citace lze využít i online generátor citací. Například citacePRO.com, kde se můžete zaregistrovat. @ujc-tecka
-])

@@ -827,9 +827,9 @@
             <group delimiter=". " suffix=". ">
               <text macro="responsability"/>
               <choose>
-                <if match="none" variable="container-title">
+                <if type="webpage">
                   <text variable="title" font-style="italic"/>
-                  <text value="Webové sídlo"/>
+                  <text term="online" />
                   <text macro="edition"/>
                   <text macro="cele-datum"/>
                 </if>
