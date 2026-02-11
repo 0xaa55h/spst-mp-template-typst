@@ -15,10 +15,6 @@
       <name>Adam Zizien</name>
       <email>zizieada@fel.cvut.cz</email>
     </author>
-    <author>
-      <name>Jan Prokůpek</name>
-      <email>prokupekj.07@spst.eu</email>
-    </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
     <summary>Style based on ČSN ISO 690:2022</summary>
@@ -27,7 +23,6 @@
   </info>
   <locale>
     <terms>
-      <term name="online">Online</term>
       <term name="from">z</term>
       <term name="no date">s. a.</term>
       <term name="accessed">citováno</term>
@@ -194,7 +189,7 @@
       <if variable="issued">
         <choose>
           <if is-uncertain-date="issued">
-            <text term="circa" form="short" suffix=" "/>
+            <text term="circa" form="short" suffix=" "/>
           </if>
         </choose>
         <date variable="issued">
@@ -222,7 +217,7 @@
         <group delimiter=". ">
           <text variable="title"/>
           <text macro="medium-online"/>
-          <text term="in" text-case="capitalize-first" suffix=": "/>
+          <text term="in" text-case="capitalize-first" suffix=": "/>
         </group>
         <choose>
           <if variable="container-author editor" match="any">
@@ -302,16 +297,16 @@
   <macro name="date">
     <choose>
       <if variable="issued">
-        <date date-parts="year" variable="issued">
-          <date-part name="day" suffix=". "/>
-          <date-part name="month" suffix=" "/>
+        <date variable="issued">
+          <date-part name="day" suffix=". "/>
+          <date-part name="month" suffix=" "/>
           <date-part name="year"/>
         </date>
       </if>
     </choose>
   </macro>
   <macro name="scale">
-    <group delimiter=" ">
+    <group delimiter=" ">
       <text term="scale" text-case="capitalize-first"/>
       <text variable="scale"/>
     </group>
@@ -320,7 +315,7 @@
     <choose>
       <if is-numeric="edition">
         <number variable="edition" form="ordinal"/>
-        <label prefix=" " variable="edition" form="short"/>
+        <label prefix=" " variable="edition" form="short"/>
       </if>
       <else>
         <text variable="edition"/>
@@ -432,13 +427,13 @@
   <macro name="page">
     <choose>
       <if type="book thesis manuscript" match="any">
-        <group delimiter=" ">
+        <group delimiter=" ">
           <text variable="number-of-pages"/>
           <text term="page" form="short"/>
         </group>
       </if>
       <else-if type="chapter paper-conference article-newspaper" match="any">
-        <group delimiter=" ">
+        <group delimiter=" ">
           <text term="page" form="short"/>
           <text variable="page"/>
         </group>
@@ -455,9 +450,6 @@
           <if match="any" variable="ISBN">
             <text variable="ISBN" prefix="ISBN "/>
           </if>
-          <else-if match="any" variable="ISSN">
-            <text variable="ISSN" prefix="ISSN "/>
-          </else-if>
           <else-if match="any" variable="PMID">
             <text variable="PMID" prefix="PMID "/>
           </else-if>
@@ -469,7 +461,7 @@
     </choose>
   </macro>
   <macro name="issn">
-    <text variable="ISSN" prefix="ISSN "/>
+    <text variable="ISSN" prefix="ISSN "/>
   </macro>
   <macro name="url">
     <choose>
@@ -481,33 +473,32 @@
       </if>
       <else-if variable="URL">
         <group>
-          <text term="available at" suffix=": " text-case="capitalize-first"/>
+          <text term="available at" suffix=": " text-case="capitalize-first"/>
           <text variable="URL" text-decoration="underline" suffix="."/>
         </group>
       </else-if>
     </choose>
   </macro>
   <macro name="cele-datum">
-
-    <text macro="year-date"/>
-  </macro>
+  <choose>
+    <if variable="issued" match="all">
+      <date variable="issued">
+        <date-part name="year"/>
+        <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+        <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+      </date>
+    </if>
+    <else>
+      <text macro="year-date"/>
+    </else>
+  </choose>
+</macro>
   <macro name="doi-url">
     <choose>
       <if match="any" variable="DOI">
         <text variable="DOI" text-decoration="none" prefix="https://doi.org/"/>
       </if>
-    </choose>    <!-- <choose>
-      <if match="all" variable="issued cele-datum">
-        <date date-parts="year" variable="issued">
-          <date-part name="year" suffix="-"/>
-          <date-part name="month" form="numeric-leading-zeros" suffix="-"/>
-          <date-part name="day" form="numeric-leading-zeros"/>
-        </date>
-      </if>
-      <else>
-        <text macro="year-date"/>
-      </else>
-    </choose> -->
+    </choose>
   </macro>
   <macro name="url-chapter">
     <choose>
@@ -519,7 +510,7 @@
       </if>
       <else-if match="any" variable="URL">
         <group>
-          <text term="available at" text-case="capitalize-first" suffix=": "/>
+          <text term="available at" text-case="capitalize-first" suffix=": "/>
           <text variable="URL" text-decoration="underline"/>
         </group>
       </else-if>
@@ -626,7 +617,7 @@
     <layout prefix="[" suffix="]" delimiter=", ">
       <group delimiter=" ">
         <text variable="citation-number"/>
-        <group delimiter=" ">
+        <group delimiter=" ">
           <label variable="locator" form="short"/>
           <text variable="locator"/>
         </group>
@@ -655,7 +646,6 @@
               <text macro="isbn"/>
               <text macro="url"/>
               <text variable="archive"/>
-              <text macro="accessed"/>
               <text variable="note" text-case="capitalize-first"/>
             </group>
           </if>
@@ -792,7 +782,7 @@
                 <text macro="publisher-info"/>
                 <text macro="cele-datum"/>
               </group>
-              <!-- <text variable="rozmery"/> -->
+              <text variable="dimensions"/>
               <text macro="isbn"/>
               <text macro="url"/>
               <text macro="accessed"/>
@@ -852,21 +842,20 @@
                 </else>
               </choose>
               <text macro="isbn"/>
-              <!-- <choose>
-                <if match="any" variable="archivovano">
+              <choose>
+                <if match="any" variable="archive">
                   <group delimiter=". ">
                     <group delimiter=", " prefix="Archivní kopie dostupná z: ">
                       <text variable="publisher" suffix=" (distributor)"/>
                       <text variable="URL" text-decoration="underline"/>
                     </group>
-                    <text variable="archivovano" prefix="[archivováno " suffix="]"/>
+                    <text variable="archive" prefix="[archivováno " suffix="]"/>
                   </group>
                 </if>
                 <else>
                   <text macro="url"/>
                 </else>
-              </choose> -->
-              <text macro="url"/>
+              </choose>
               <text macro="accessed"/>
             </group>
           </else-if>
@@ -882,7 +871,7 @@
             <group delimiter=". " suffix=". ">
               <group delimiter=" ">
                 <text macro="responsability"/>
-                <!-- <text variable="nick" prefix="[" suffix="]"/> -->
+                <text macro="author" prefix="[" suffix="]"/>
               </group>
               <text variable="title" font-style="italic"/>
               <text variable="genre" text-case="capitalize-first"/>

@@ -2,13 +2,46 @@
 
 Toto je šablona pro tvorbu maturitní práce na Střední průmyslové škole Třebíč pomocí [Typst](https://typst.app/).
 
+> [!WARN]
+> Použití šablony je na vlastní nebezepečí. Negarantuji, že při použití vám nebudou strženy body za formátování a úpravy.
+
 ## Jak používat
 
-Na začátku souboru `thesis.typ` vyplňte základní údaje o práci, ty se sami doplní na příslušná místa v dokumentu.
-Zbytek práce pak můžete psát dále v souboru `thesis.typ`, který se poté importuje do hlavního souboru `main.typ`.
-Pro citace a tvorbu seznamu použité literatury je využíván formát [BibTeX](https://en.wikipedia.org/wiki/BibTeX). Citace lze vkládat pomocí příkazu `#cite("klíč")` nebo `@klíč`, kde `klíč` odpovídá klíči v souboru `works.bib`.  
+Importujte si soubor `template.typ` do vašeho vlastního souboru `.typ` souboru a poté použijte funkci thesis. 
+Příklad s default hodnotami:
 
-Soubor do PDF lze zkompilovat jednoduše pomocí `typst compile main.typ`.
+```typ
+#thesis(
+  name: "Název maturitní práce",
+  major: "Informační technologie",
+  class: "ITB4",
+  year: 2025,
+  author: "Jméno Příjmení",
+  abstract-cs: [
+    Tvorba maturitní práce je jedním z velmi klíčových momentů při studiu. Kvalita zpracování její formální části je pak jedním z nejdůležitějších kritérií při jejím hodnocení. Cíl této práce je popsat jednotlivé kroky během tohoto procesu, doporučit postupy a vytvořit šablonu, která usnadní celý proces.
+  ],
+  abstract-en: [
+    The creation of a graduation thesis is one of the most crucial moments during studies. The quality of the processing of its formal part is then one of the most important criteria in its evaluation. The aim of this work is to describe the individual steps during this process, recommend procedures and create a template that will facilitate the entire process.
+  ],
+  keywords-cs: [
+    maturitní práce, šablona
+  ],
+  keywords-en: [
+    graduation thesis, template
+  ],
+  acknowledgements: [
+    Děkuji Mgr. Petru Novotnému za cenné připomínky a rady, které mi poskytl při vypracování maturitní práce.
+  ],
+  assignment: [
+    Zadání maturitní práce je přílohou této práce.
+  ],
+  declaration: [
+    Prohlašuji, že jsem tuto práci vypracoval/a samostatně a uvedl/a v ní všechny prameny, literaturu a ostatní zdroje, které jsem použil/a.
+  ],
+  date: "15. května 2024",
+  body: [])
+
+```
 
 ## Licence
 
